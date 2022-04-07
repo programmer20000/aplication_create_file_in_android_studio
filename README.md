@@ -1,2 +1,2 @@
-# aplication_create_file_in_android_studio
+# application_create_file_in_android_studio
 I continue developing project
