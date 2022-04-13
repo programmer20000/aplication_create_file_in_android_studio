@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText NameFileField;
@@ -26,12 +29,5 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
 
         NameFile = NameFileField.getText().toString();
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("Hi"+ NameFile);
-            }
-        });
     }
 }
