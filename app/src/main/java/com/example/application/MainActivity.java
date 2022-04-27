@@ -3,6 +3,7 @@ package com.example.application;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
 
         NameFile = NameFileField.getText().toString();
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,16 +39,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void  CreateFile(){
-        try {
 
-            FileWriter fileWriter = new FileWriter(NameFile);
+    public void CreateFile() {
+        try {
+            File Directory = new File(Environment.getDownloadCacheDirectory(), "DirectoryFile");
+            if (!Directory.exists()) {
+                Directory.mkdir();
+            }
+
+            FileWriter fileWriter = new FileWriter("DirectoryFile/" + NameFile);
             fileWriter.write("");
+            fileWriter.flush();
             fileWriter.close();
 
-        }catch (Exception exception){
-            textView.setText("Error");
-            exception.printStackTrace();
+        } catch (IOException ioException) {
+            {
+                textView.setText("Error");
+                ioException.printStackTrace();
+            }
         }
     }
 }
